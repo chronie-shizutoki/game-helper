@@ -6,7 +6,10 @@ import vueDevTools from 'vite-plugin-vue-devtools'
 // https://vite.dev/config/
 export default defineConfig({
   // 设置基础路径，用于GitHub Pages部署
-  base: '',
+  // 如果部署在根域名下，使用空字符串''
+  // 如果部署在子路径下，设置为仓库名称，如'/stellagogue/'
+  // 注意：错误的base路径会导致GitHub Pages上出现"Failed to resolve module specifier"错误
+  base: '/Stellagogue/', // 当前设置适用于根域名部署，如果部署路径不同，请相应修改
   
   plugins: [
     vue(),
@@ -24,17 +27,17 @@ export default defineConfig({
     outDir: 'dist',
     assetsDir: 'assets',
     sourcemap: false,
-    // 确保所有代码都被打包到一个文件中，避免模块解析问题
+    // 确保所有代码都被正确打包，解决ES模块在GitHub Pages上的解析问题
     rollupOptions: {
-      // 不将任何依赖视为外部依赖
+      // 不将任何依赖视为外部依赖，确保Vue等依赖被打包到输出文件中
       external: [],
       output: {
-        // 使用iife格式（立即执行函数表达式）而不是es模块
-        format: 'iife',
+        // 使用ES模块格式，这是现代浏览器支持的标准
+        format: 'es',
         assetFileNames: 'assets/[name]-[hash].[ext]',
         chunkFileNames: 'assets/[name]-[hash].js',
         entryFileNames: 'assets/[name]-[hash].js',
-        // 确保Vue被正确打包
+        // 确保生成的模块ID使用相对路径，解决GitHub Pages上的路径解析问题
         manualChunks: undefined
       }
     }
