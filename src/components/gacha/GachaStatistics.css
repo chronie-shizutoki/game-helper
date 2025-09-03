@@ -1,0 +1,833 @@
+/* 液态玻璃设计规范 - GachaStatistics.css */
+
+/* 全局样式变量 - 液态玻璃效果基础 */
+:root {
+  /* 玻璃拟态基础变量 */
+  --glass-bg: rgba(255, 255, 255, 0.1);
+  --glass-border: rgba(255, 255, 255, 0.2);
+  --glass-shadow: rgba(0, 0, 0, 0.1);
+  --glass-backdrop: blur(10px);
+  
+  /* 间距变量 */
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+  --spacing-xxl: 48px;
+  
+  /* 圆角变量 */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  
+  /* 过渡动画 */
+  --transition-fast: 0.3s ease;
+  --transition-slow: 0.5s ease;
+}
+
+/* 暗黑主题调整 */
+.dark-theme {
+  --glass-bg: rgba(22, 24, 35, 0.5);
+  --glass-border: rgba(255, 255, 255, 0.05);
+  --glass-shadow: rgba(0, 0, 0, 0.2);
+}
+
+/* 主容器 */
+.gacha-statistics {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  padding: var(--spacing-md);
+  min-height: 100vh;
+}
+
+/* 液态玻璃卡片基础样式 */
+.glass-card {
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-backdrop);
+  -webkit-backdrop-filter: var(--glass-backdrop);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 8px 32px var(--glass-shadow);
+  transition: all var(--transition-fast);
+  position: relative;
+  overflow: hidden;
+}
+
+.glass-card:hover {
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
+}
+
+/* 液态玻璃卡片装饰效果 */
+.glass-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--glass-border), transparent);
+  opacity: 0.7;
+}
+
+.glass-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--glass-border), transparent);
+  opacity: 0.7;
+}
+
+/* 液态玻璃按钮样式 */
+.glass-button {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: var(--glass-backdrop);
+  -webkit-backdrop-filter: var(--glass-backdrop);
+  border: 1px solid var(--glass-border);
+  color: var(--text-primary);
+  padding: var(--spacing-xs) var(--spacing-md);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-weight: 500;
+  transition: all var(--transition-fast);
+  position: relative;
+  overflow: hidden;
+  font-size: 14px;
+}
+
+.glass-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.glass-button:hover::before {
+  left: 100%;
+}
+
+.glass-button:hover {
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
+}
+
+/* 特定按钮样式 */
+.btn-advanced {
+  background: linear-gradient(135deg, rgba(50, 200, 50, 0.2), rgba(50, 200, 50, 0.1));
+  border-color: rgba(50, 200, 50, 0.3);
+}
+
+.btn-export {
+  background: linear-gradient(135deg, rgba(100, 100, 255, 0.2), rgba(100, 100, 255, 0.1));
+  border-color: rgba(100, 100, 255, 0.3);
+}
+
+.btn-clean {
+  background: linear-gradient(135deg, rgba(255, 150, 0, 0.2), rgba(255, 150, 0, 0.1));
+  border-color: rgba(255, 150, 0, 0.3);
+}
+
+/* 加载状态 */
+.loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+  font-size: 16px;
+  color: var(--text-secondary);
+  padding: var(--spacing-lg);
+}
+
+.loading-spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid rgba(255, 255, 255, 0.1);
+  border-top: 4px solid var(--primary);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: var(--spacing-md);
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* 无数据提示 */
+.no-data {
+  text-align: center;
+  padding: var(--spacing-xxl) var(--spacing-md);
+  color: var(--text-secondary);
+}
+
+/* 筛选条件区域 */
+.statistics-filters {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--spacing-md);
+  padding: var(--spacing-md);
+}
+
+/* 分析控制按钮 */
+.analysis-controls {
+  display: flex;
+  gap: var(--spacing-sm);
+  margin-left: auto;
+}
+
+.filter-group {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.filter-group label {
+  color: var(--text-secondary);
+  font-size: 14px;
+}
+
+/* 液态玻璃选择框 */
+.glass-select {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: var(--glass-backdrop);
+  -webkit-backdrop-filter: var(--glass-backdrop);
+  border: 1px solid var(--glass-border);
+  color: var(--text-primary);
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  font-size: 14px;
+}
+
+.glass-select:hover {
+  border-color: var(--primary);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* 统计概览 */
+.statistics-overview {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--spacing-md);
+}
+
+.statistics-card {
+  padding: var(--spacing-md);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+  text-align: center;
+}
+
+.statistics-card h3 {
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: 14px;
+  font-weight: normal;
+}
+
+.statistics-card .value {
+  color: var(--text-primary);
+  font-size: 24px;
+  font-weight: bold;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.statistics-card .value.five-star {
+  color: var(--rarity-5);
+}
+
+.statistics-card .value.four-star {
+  color: var(--rarity-4);
+}
+
+/* 分布图表 */
+.distribution-charts {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+}
+
+.distribution-chart {
+  padding: var(--spacing-md);
+}
+
+.distribution-chart h3 {
+  margin: 0 0 var(--spacing-md) 0;
+  color: var(--text-primary);
+  font-size: 18px;
+  text-align: center;
+}
+
+/* 星级分布图 */
+.rarity-distribution {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-end;
+  height: 200px;
+  gap: var(--spacing-sm);
+}
+
+.rarity-bar-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.rarity-bar {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-sm);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.rarity-bar::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  border-radius: var(--radius-sm);
+  transition: height var(--transition-slow);
+}
+
+.rarity-bar.rarity-5::after {
+  background: var(--rarity-5);
+}
+
+.rarity-bar.rarity-4::after {
+  background: var(--rarity-4);
+}
+
+.rarity-bar.rarity-3::after {
+  background: var(--rarity-3);
+}
+
+/* 保底间隔分布图 */
+.pity-spacing-distribution {
+  display: flex;
+  align-items: flex-end;
+  height: 200px;
+  gap: 4px;
+  overflow-x: auto;
+  padding-bottom: var(--spacing-sm);
+}
+
+.spacing-bar-container {
+  flex: 0 0 auto;
+  width: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-xs);
+}
+
+.spacing-bar {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-sm);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.spacing-bar::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: var(--info);
+  border-radius: var(--radius-sm);
+  transition: height var(--transition-slow);
+}
+
+.spacing-label {
+  color: var(--text-secondary);
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+/* 抽卡类型分布图 */
+.gacha-type-distribution {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.type-distribution-item {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+}
+
+.type-info {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  min-width: 120px;
+}
+
+.type-color-indicator {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.type-name {
+  color: var(--text-secondary);
+  font-size: 14px;
+}
+
+.type-bar {
+  flex: 1;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+}
+
+.type-bar::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  border-radius: 4px;
+  transition: width var(--transition-slow);
+}
+
+.type-count {
+  color: var(--text-secondary);
+  font-size: 14px;
+  min-width: 60px;
+  text-align: right;
+}
+
+/* 高级分析部分 */
+.advanced-analytics {
+  margin-top: var(--spacing-xl);
+  animation: slideDown var(--transition-fast) ease-out;
+}
+
+@keyframes slideDown {
+  from { opacity: 0; max-height: 0; }
+  to { opacity: 1; max-height: 5000px; }
+}
+
+.loading-advanced {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-xxl) var(--spacing-md);
+  color: var(--text-secondary);
+}
+
+.advanced-analytics-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+}
+
+.advanced-section {
+  padding: var(--spacing-md);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--glass-border);
+}
+
+.advanced-section h3 {
+  margin: 0 0 var(--spacing-md) 0;
+  color: var(--text-primary);
+  padding-bottom: var(--spacing-sm);
+  border-bottom: 2px solid var(--glass-border);
+}
+
+/* 时间趋势分析 */
+.time-trend {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.time-range-info {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-md);
+  padding: var(--spacing-md);
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--glass-border);
+}
+
+.time-range-info p {
+  margin: 0;
+  font-size: 14px;
+  color: var(--text-secondary);
+}
+
+.monthly-stats h4 {
+  margin: 0 0 var(--spacing-md) 0;
+  color: var(--text-primary);
+}
+
+.monthly-chart {
+  display: flex;
+  align-items: flex-end;
+  gap: 10px;
+  height: 200px;
+  padding: var(--spacing-md) 0;
+}
+
+.month-bar {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  min-width: 50px;
+}
+
+.month-label {
+  font-size: 12px;
+  color: var(--text-secondary);
+  margin-bottom: var(--spacing-sm);
+  text-align: center;
+}
+
+.month-bar-fill {
+  background: linear-gradient(to top, var(--success), var(--success-light));
+  border-radius: var(--radius-sm);
+  width: 100%;
+  transition: height var(--transition-slow);
+  box-shadow: 0 4px 12px rgba(50, 200, 50, 0.2);
+}
+
+.month-value {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-top: var(--spacing-xs);
+}
+
+.month-five-stars {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background: var(--rarity-5);
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 2px 6px;
+  border-radius: 10px;
+  min-width: 20px;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(255, 215, 0, 0.3);
+}
+
+/* 物品分析 */
+.item-analysis {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.item-summary {
+  padding: var(--spacing-md);
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--glass-border);
+}
+
+.item-summary p {
+  margin: 0 0 var(--spacing-sm) 0;
+  font-size: 14px;
+  color: var(--text-secondary);
+}
+
+.item-summary p:last-child {
+  margin-bottom: 0;
+}
+
+.character-weapon-ratio h4 {
+  margin: 0 0 var(--spacing-md) 0;
+  color: var(--text-primary);
+}
+
+.ratio-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: var(--spacing-md);
+}
+
+.ratio-group h5 {
+  margin: 0 0 var(--spacing-sm) 0;
+  color: var(--text-primary);
+}
+
+.ratio-group {
+  background: rgba(255, 255, 255, 0.03);
+  padding: var(--spacing-md);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--glass-border);
+}
+
+.ratio-bars {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.ratio-bar {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.ratio-label {
+  font-size: 13px;
+  color: var(--text-secondary);
+  min-width: 80px;
+}
+
+.ratio-bar-fill {
+  height: 12px;
+  border-radius: 6px;
+  flex: 1;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.character-ratio {
+  background: var(--primary);
+}
+
+.weapon-ratio {
+  background: var(--warning);
+}
+
+/* 概率分析 */
+.probability-analysis {
+  padding: var(--spacing-md);
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--glass-border);
+}
+
+.probability-summary {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-md);
+}
+
+.probability-summary p {
+  margin: 0;
+  font-size: 14px;
+  color: var(--text-secondary);
+}
+
+.probability-deviation {
+  font-weight: 600;
+}
+
+.probability-deviation.above-average {
+  color: var(--success);
+}
+
+.probability-deviation.below-average {
+  color: var(--danger);
+}
+
+/* 高级保底分析 */
+.advanced-pity-analysis {
+  padding: var(--spacing-md);
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--glass-border);
+}
+
+.pity-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-md);
+}
+
+.pity-stats p {
+  margin: 0;
+  font-size: 14px;
+  color: var(--text-secondary);
+}
+
+/* 抽卡建议 */
+.recommendation {
+  padding: var(--spacing-md);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.05) 100%);
+  border-radius: var(--radius-md);
+  border-left: 4px solid var(--success);
+  border: 1px solid var(--glass-border);
+}
+
+.recommendation-content p {
+  margin: 0 0 var(--spacing-sm) 0;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--text-primary);
+}
+
+.recommendation-content p.confidence {
+  font-size: 14px;
+  color: var(--text-secondary);
+  margin-bottom: 0;
+  font-style: italic;
+}
+
+/* 干涸期分析 */
+.dry-spells-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.dry-spell-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--spacing-sm) var(--spacing-md);
+  background: rgba(255, 243, 205, 0.1);
+  border: 1px solid rgba(255, 234, 167, 0.3);
+  border-radius: var(--radius-sm);
+  transition: transform var(--transition-fast);
+}
+
+.dry-spell-item:hover {
+  transform: translateX(5px);
+  box-shadow: 0 4px 12px rgba(255, 193, 7, 0.1);
+}
+
+.dry-spell-length {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--warning);
+}
+
+.dry-spell-ended {
+  font-size: 12px;
+  color: var(--warning);
+}
+
+.dry-spell-ongoing {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.ongoing-badge {
+  background: var(--danger);
+  color: white;
+  font-size: 11px;
+  padding: 2px 8px;
+  border-radius: 10px;
+  font-weight: 600;
+  box-shadow: 0 2px 6px rgba(255, 70, 70, 0.2);
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .gacha-statistics {
+    padding: var(--spacing-sm);
+  }
+  
+  .statistics-filters {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .analysis-controls {
+    margin-left: 0;
+    justify-content: center;
+  }
+  
+  .filter-group {
+    justify-content: space-between;
+  }
+  
+  .statistics-overview {
+    grid-template-columns: 1fr 1fr;
+  }
+  
+  .rarity-distribution {
+    height: 150px;
+  }
+  
+  .pity-spacing-distribution {
+    height: 150px;
+  }
+  
+  .spacing-bar-container {
+    width: 20px;
+  }
+  
+  .type-distribution-item {
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--spacing-sm);
+  }
+  
+  .type-info {
+    min-width: auto;
+  }
+  
+  .type-count {
+    text-align: left;
+  }
+}
+
+@media (max-width: 480px) {
+  .statistics-overview {
+    grid-template-columns: 1fr;
+  }
+  
+  .distribution-chart h3 {
+    font-size: 16px;
+  }
+  
+  .statistics-card .value {
+    font-size: 20px;
+  }
+  
+  .spacing-bar-container {
+    width: 16px;
+  }
+}
+
+/* 打印样式优化 */
+@media print {
+  .glass-card {
+    background: white !important;
+    border: 1px solid #ddd !important;
+    box-shadow: none !important;
+  }
+  
+  .glass-button {
+    display: none;
+  }
+}

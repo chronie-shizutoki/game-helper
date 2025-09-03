@@ -1,0 +1,28 @@
+{
+  "game.genshinImpact": "Genshin Impact",
+  "game.starRail": "Honkai: Star Rail",
+  "game.zenlessZone": "Zenless Zone Zero",
+  
+  "common.dailyNote": "Daily Note",
+  "common.resin": "Resin",
+  "common.stamina": "Stamina",
+  "common.weeklyBoss": "Weekly Boss",
+  "common.dailyTasks": "Daily Tasks",
+  "common.expedition": "Expedition",
+  "common.completed": "Completed",
+  "common.pending": "Pending",
+  "common.all": "All",
+  
+  "ui.addAccount": "Add Account",
+  "ui.removeAccount": "Remove Account",
+  "ui.settings": "Settings",
+  "ui.language": "Language",
+  "ui.theme": "Theme",
+  "ui.darkMode": "Dark Mode",
+  "ui.lightMode": "Light Mode",
+  
+  "error.networkError": "Network Error",
+  "error.invalidCredentials": "Invalid Credentials",
+  "error.serverError": "Server Error",
+  "error.loadingData": "Loading Data"
+}

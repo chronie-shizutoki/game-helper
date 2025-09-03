@@ -1,0 +1,28 @@
+{
+  "game.genshinImpact": "原神",
+  "game.starRail": "崩坏：星穹铁道",
+  "game.zenlessZone": "绝区零",
+  
+  "common.dailyNote": "每日便签",
+  "common.resin": "树脂",
+  "common.stamina": "体力",
+  "common.weeklyBoss": "周本",
+  "common.dailyTasks": "每日委托",
+  "common.expedition": "探索派遣",
+  "common.completed": "已完成",
+  "common.pending": "待完成",
+  "common.all": "全部",
+  
+  "ui.addAccount": "添加账号",
+  "ui.removeAccount": "删除账号",
+  "ui.settings": "设置",
+  "ui.language": "语言",
+  "ui.theme": "主题",
+  "ui.darkMode": "深色模式",
+  "ui.lightMode": "浅色模式",
+  
+  "error.networkError": "网络错误",
+  "error.invalidCredentials": "凭证无效",
+  "error.serverError": "服务器错误",
+  "error.loadingData": "加载数据中"
+}

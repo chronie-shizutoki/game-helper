@@ -1,0 +1,210 @@
+/* GachaSystem 组件样式 */
+.gacha-system {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+}
+
+/* 头部区域 */
+.gacha-system-header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.gacha-system-header .glass-effect {
+  padding: var(--spacing-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.gacha-system-header h2 {
+  margin: 0;
+  color: var(--text-primary);
+  font-size: 24px;
+  text-align: center;
+}
+
+/* 配置文件区域 */
+.profile-section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.profile-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* 配置文件信息栏 */
+.profile-info-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--spacing-md) var(--spacing-lg);
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--glass-shadow);
+  backdrop-filter: var(--glass-backdrop);
+  -webkit-backdrop-filter: var(--glass-backdrop);
+}
+
+/* 配置文件操作按钮 */
+.profile-actions {
+  display: flex;
+  gap: var(--spacing-sm);
+}
+
+/* 按钮样式应用液态玻璃风格 */
+.btn {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-md);
+  color: var(--text-primary);
+  padding: var(--spacing-sm) var(--spacing-md);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  backdrop-filter: var(--glass-backdrop);
+  -webkit-backdrop-filter: var(--glass-backdrop);
+}
+
+.btn:hover {
+  background: rgba(42, 44, 49, 0.8);
+  transform: translateY(-1px);
+}
+
+.btn:active {
+  transform: translateY(0);
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.profile-details {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.profile-game {
+  color: var(--text-secondary);
+  font-size: 14px;
+}
+
+.profile-name {
+  color: var(--text-primary);
+  font-size: 18px;
+  font-weight: 500;
+}
+
+/* 标签页切换 */
+.tabs {
+  display: flex;
+  background: var(--glass-bg);
+  border-radius: var(--radius-lg);
+  padding: 4px;
+  backdrop-filter: var(--glass-backdrop);
+  -webkit-backdrop-filter: var(--glass-backdrop);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+}
+
+.tab-btn {
+  flex: 1;
+  padding: var(--spacing-sm) var(--spacing-md);
+  border: none;
+  background: rgba(26, 27, 29, 0.3);
+  color: var(--text-secondary);
+  cursor: pointer;
+  border-radius: var(--radius-md);
+  transition: all var(--transition-fast);
+  backdrop-filter: var(--glass-backdrop);
+  -webkit-backdrop-filter: var(--glass-backdrop);
+}
+
+.tab-btn.active {
+  background: rgba(26, 27, 29, 0.8);
+  color: var(--text-primary);
+  font-weight: 500;
+  border: 1px solid var(--glass-border);
+}
+
+.tab-btn:hover:not(.active) {
+  background: rgba(26, 27, 29, 0.5);
+}
+
+/* 内容区域 */
+.tab-content {
+  min-height: 400px;
+  padding: var(--spacing-lg);
+}
+
+/* 配置文件管理器遮罩 */
+.profile-manager-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+.profile-manager-container {
+  width: 90%;
+  max-width: 600px;
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .gacha-system {
+    gap: var(--spacing-md);
+  }
+  
+  .gacha-system-header .glass-effect {
+    padding: var(--spacing-md);
+  }
+  
+  .gacha-system-header h2 {
+    font-size: 20px;
+  }
+  
+  .tab-content {
+    padding: var(--spacing-md);
+    min-height: 300px;
+  }
+  
+  .profile-info {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-sm);
+  }
+  
+  .tabs {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 480px) {
+  .profile-manager-container {
+    width: 95%;
+  }
+  
+  .gacha-system-header h2 {
+    font-size: 18px;
+  }
+}

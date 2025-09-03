@@ -1,0 +1,294 @@
+/* GachaHistory 组件样式 */
+.gacha-history {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+/* 历史记录内容容器 */
+.gacha-history-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+/* 顶部信息和筛选 */
+.gacha-history-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--spacing-md);
+  padding: var(--spacing-md) var(--spacing-lg);
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--glass-shadow);
+  backdrop-filter: var(--glass-backdrop);
+  -webkit-backdrop-filter: var(--glass-backdrop);
+}
+
+.total-count {
+  color: var(--text-primary);
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.gacha-type-filter {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+
+
+.gacha-type-filter label {
+  color: var(--text-secondary);
+  font-size: 14px;
+}
+
+/* 保底状态显示 */
+.pity-status {
+  padding: var(--spacing-md) var(--spacing-lg);
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--glass-shadow);
+  backdrop-filter: var(--glass-backdrop);
+  -webkit-backdrop-filter: var(--glass-backdrop);
+}
+
+.pity-info {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.pity-info span {
+  color: var(--text-secondary);
+  font-size: 14px;
+}
+
+.pity-count {
+  color: var(--warning);
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.pity-remaining {
+  color: var(--info);
+  font-size: 20px;
+  font-weight: bold;
+}
+
+/* 分页控制 */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--spacing-md);
+  flex-wrap: wrap;
+  padding: var(--spacing-md) var(--spacing-lg);
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--glass-shadow);
+  backdrop-filter: var(--glass-backdrop);
+  -webkit-backdrop-filter: var(--glass-backdrop);
+}
+
+.pagination button {
+  min-width: 80px;
+}
+
+.pagination span {
+  color: var(--text-primary);
+  font-size: 14px;
+  min-width: 120px;
+  text-align: center;
+}
+
+.page-size {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+
+
+.page-size label {
+  color: var(--text-secondary);
+  font-size: 14px;
+}
+
+/* 抽卡记录表格 */
+.gacha-entries {
+  overflow-x: auto;
+  padding: var(--spacing-md);
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--glass-shadow);
+  backdrop-filter: var(--glass-backdrop);
+  -webkit-backdrop-filter: var(--glass-backdrop);
+}
+
+.gacha-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.gacha-table th {
+  background: rgba(26, 27, 29, 0.5);
+  color: var(--text-primary);
+  padding: var(--spacing-sm) var(--spacing-md);
+  text-align: left;
+  font-weight: 500;
+  border-bottom: 1px solid var(--glass-border);
+  white-space: nowrap;
+}
+
+.gacha-table td {
+  color: var(--text-secondary);
+  padding: var(--spacing-sm) var(--spacing-md);
+  border-bottom: 1px solid var(--glass-border);
+}
+
+.gacha-entry:hover td {
+  background: rgba(26, 27, 29, 0.3);
+}
+
+.gacha-entry.rarity-5 td {
+  background: rgba(255, 187, 0, 0.05);
+}
+
+.gacha-entry.rarity-5:hover td {
+  background: rgba(255, 187, 0, 0.1);
+}
+
+.gacha-entry.rarity-4 td {
+  background: rgba(123, 97, 255, 0.05);
+}
+
+.gacha-entry.rarity-4:hover td {
+  background: rgba(123, 97, 255, 0.1);
+}
+
+/* 没有数据时的提示 */
+.no-data {
+  text-align: center;
+  padding: var(--spacing-xl);
+  color: var(--text-muted);
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--glass-shadow);
+  backdrop-filter: var(--glass-backdrop);
+  -webkit-backdrop-filter: var(--glass-backdrop);
+}
+
+.no-data p {
+  margin: var(--spacing-sm) 0;
+}
+
+/* 调试信息 */
+.debug-info {
+  font-family: monospace;
+  background-color: rgba(240, 240, 240, 0.1);
+  padding: 2px 5px;
+  font-size: 12px;
+  color: var(--text-secondary);
+  border-radius: var(--radius-sm);
+}
+
+/* 选择框样式 */
+select {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-md);
+  color: var(--text-primary);
+  padding: var(--spacing-sm) var(--spacing-md);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  backdrop-filter: var(--glass-backdrop);
+  -webkit-backdrop-filter: var(--glass-backdrop);
+}
+
+select:focus {
+  outline: none;
+  border-color: var(--info);
+  box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.2);
+}
+
+/* 按钮样式 */
+button {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-md);
+  color: var(--text-primary);
+  padding: var(--spacing-sm) var(--spacing-md);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  backdrop-filter: var(--glass-backdrop);
+  -webkit-backdrop-filter: var(--glass-backdrop);
+}
+
+button:hover:not(:disabled) {
+  background: rgba(42, 44, 49, 0.8);
+  transform: translateY(-1px);
+}
+
+button:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .gacha-history-header {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .gacha-type-filter {
+    justify-content: space-between;
+  }
+  
+  .pagination {
+    gap: var(--spacing-sm);
+  }
+  
+  .pagination span {
+    min-width: auto;
+  }
+  
+  .pity-info {
+    flex-direction: column;
+    gap: var(--spacing-sm);
+  }
+  
+  .gacha-table th,
+  .gacha-table td {
+    padding: var(--spacing-xs) var(--spacing-sm);
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 480px) {
+  .gacha-entries {
+    padding: var(--spacing-sm);
+  }
+  
+  .gacha-table th,
+  .gacha-table td {
+    padding: var(--spacing-xs);
+    font-size: 12px;
+  }
+}

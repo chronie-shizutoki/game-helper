@@ -1,0 +1,151 @@
+/* GachaProfileManager 组件样式 */
+.gacha-profile-manager {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+/* 创建配置文件表单 */
+.create-profile-form {
+  padding: var(--spacing-md);
+}
+
+.create-profile-form h3 {
+  margin: 0 0 var(--spacing-md) 0;
+  color: var(--text-primary);
+  font-size: 18px;
+  text-align: center;
+}
+
+.form-group {
+  margin-bottom: var(--spacing-md);
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: var(--spacing-xs);
+  color: var(--text-secondary);
+  font-size: 14px;
+}
+
+.create-btn {
+  width: 100%;
+  margin-top: var(--spacing-md);
+  padding: var(--spacing-sm) var(--spacing-md);
+  font-weight: 500;
+}
+
+/* 配置文件列表 */
+.profiles-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.profiles-list h3 {
+  margin: 0;
+  color: var(--text-primary);
+  font-size: 18px;
+  text-align: center;
+}
+
+/* 配置文件项 */
+.profile-item {
+  padding: var(--spacing-md);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.profile-item.selected {
+  background: rgba(96, 165, 250, 0.1);
+  border-color: rgba(96, 165, 250, 0.3);
+}
+
+.profile-details {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+}
+
+.profile-name {
+  color: var(--text-primary);
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.profile-meta {
+  display: flex;
+  gap: var(--spacing-md);
+  font-size: 14px;
+  color: var(--text-secondary);
+}
+
+.profile-actions {
+  display: flex;
+  gap: var(--spacing-sm);
+}
+
+.action-btn {
+  padding: var(--spacing-xs) var(--spacing-sm);
+  font-size: 12px;
+}
+
+.action-btn.delete {
+  background: rgba(248, 113, 113, 0.1);
+  border-color: rgba(248, 113, 113, 0.3);
+  color: var(--error);
+}
+
+.action-btn.delete:hover {
+  background: rgba(248, 113, 113, 0.2);
+}
+
+/* 没有配置文件时的提示 */
+.no-profiles {
+  text-align: center;
+  padding: var(--spacing-xl);
+  color: var(--text-muted);
+}
+
+.no-profiles p {
+  margin: var(--spacing-sm) 0;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .profile-item {
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--spacing-md);
+  }
+  
+  .profile-actions {
+    justify-content: center;
+  }
+  
+  .profile-meta {
+    flex-direction: column;
+    gap: var(--spacing-xs);
+  }
+}
+
+@media (max-width: 480px) {
+  .create-profile-form,
+  .profile-item {
+    padding: var(--spacing-sm);
+  }
+  
+  .create-profile-form h3,
+  .profiles-list h3 {
+    font-size: 16px;
+  }
+  
+  .profile-actions {
+    flex-direction: column;
+  }
+  
+  .action-btn {
+    width: 100%;
+  }
+}
