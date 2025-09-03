@@ -9,7 +9,7 @@ export default defineConfig({
   // 如果部署在根域名下，使用空字符串''
   // 如果部署在子路径下，设置为仓库名称，如'/stellagogue/'
   // 注意：错误的base路径会导致GitHub Pages上出现"Failed to resolve module specifier"错误
-  base: '/Stellagogue/', // 当前设置适用于根域名部署，如果部署路径不同，请相应修改
+  base: '', // 当前设置适用于根域名部署，如果部署路径不同，请相应修改
   
   plugins: [
     vue(),
