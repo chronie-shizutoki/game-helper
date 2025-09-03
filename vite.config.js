@@ -7,9 +7,9 @@ import vueDevTools from 'vite-plugin-vue-devtools'
 export default defineConfig({
   // 设置基础路径，用于GitHub Pages部署
   // 如果部署在根域名下，使用空字符串''
-  // 如果部署在子路径下，设置为仓库名称，如'/stellagogue/'
+  // 如果部署在子路径下，设置为仓库名称，如'/Stellagogue/'
   // 注意：错误的base路径会导致GitHub Pages上出现"Failed to resolve module specifier"错误
-  base: '', // 当前设置适用于根域名部署，如果部署路径不同，请相应修改
+  base: '/Stellagogue/', // 已修改为项目在GitHub Pages上的实际路径
   
   plugins: [
     vue(),
