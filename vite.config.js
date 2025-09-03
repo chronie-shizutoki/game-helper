@@ -7,9 +7,8 @@ import vueDevTools from 'vite-plugin-vue-devtools'
 // https://vite.dev/config/
 export default defineConfig({
   // 设置基础路径，用于GitHub Pages部署
-  // 如果是在GitHub Actions中构建，则从GITHUB_REPOSITORY环境变量中提取仓库名
-  // 本地开发使用根路径
-  base: process.env.CI ? `/${process.env.GITHUB_REPOSITORY ? process.env.GITHUB_REPOSITORY.split('/')[1] : 'chronie-helper'}/` : '/',
+  // 对于GitHub Pages子路径部署，使用相对路径
+  base: './',
   
   plugins: [
     vue(),
