@@ -23,10 +23,6 @@ export default {
 </script>
 
 <style scoped>
-* {
-  font-family: 'Georgia', 'Times New Roman', Times, 'SimSun', serif;
-}
-
 .app-container {
   min-height: 100vh;
   display: flex;
@@ -52,5 +48,4 @@ export default {
   flex: 1;
   padding: 20px;
 }
-
 </style>

@@ -169,6 +169,12 @@
   overflow-y: auto;
 }
 
+.footer {
+  text-align: center;
+  padding: 1rem;
+  margin-top: 2rem;
+}
+
 /* 响应式设计 */
 @media (max-width: 768px) {
   .gacha-system {
