@@ -8,6 +8,12 @@
 /* 创建配置文件表单 */
 .create-profile-form {
   padding: var(--spacing-md);
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--glass-shadow);
+  backdrop-filter: var(--glass-backdrop);
+  -webkit-backdrop-filter: var(--glass-backdrop);
 }
 
 .create-profile-form h3 {
@@ -28,11 +34,55 @@
   font-size: 14px;
 }
 
+/* 应用统一样式 */
+#game-select,
+#uid-input,
+#name-input {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-md);
+  color: var(--text-primary);
+  padding: var(--spacing-sm) var(--spacing-md);
+  width: 100%;
+  transition: all var(--transition-fast);
+}
+
+#game-select:focus,
+#uid-input:focus,
+#name-input:focus {
+  outline: none;
+  border-color: var(--info);
+  box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.2);
+}
+
+#uid-input::placeholder,
+#name-input::placeholder {
+  color: var(--text-muted);
+}
+
+/* 按钮样式应用液态玻璃风格 */
 .create-btn {
   width: 100%;
   margin-top: var(--spacing-md);
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-md);
+  color: var(--text-primary);
   padding: var(--spacing-sm) var(--spacing-md);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  backdrop-filter: var(--glass-backdrop);
+  -webkit-backdrop-filter: var(--glass-backdrop);
   font-weight: 500;
+}
+
+.create-btn:hover {
+  background: rgba(42, 44, 49, 0.8);
+  transform: translateY(-1px);
+}
+
+.create-btn:active {
+  transform: translateY(0);
 }
 
 /* 配置文件列表 */
@@ -40,6 +90,13 @@
   display: flex;
   flex-direction: column;
   gap: var(--spacing-md);
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--glass-shadow);
+  backdrop-filter: var(--glass-backdrop);
+  -webkit-backdrop-filter: var(--glass-backdrop);
+  padding: var(--spacing-md);
 }
 
 .profiles-list h3 {
@@ -49,23 +106,47 @@
   text-align: center;
 }
 
-/* 配置文件项 */
-.profile-item {
+/* 配置文件卡片 */
+.profile-card {
   padding: var(--spacing-md);
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  flex-direction: column;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--glass-shadow);
+  transition: all var(--transition-normal);
+  cursor: pointer;
 }
 
-.profile-item.selected {
+.profile-card:hover {
+  background: rgba(42, 44, 49, 0.7);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+  transform: translateY(-2px);
+}
+
+.profile-card.selected {
   background: rgba(96, 165, 250, 0.1);
   border-color: rgba(96, 165, 250, 0.3);
 }
 
-.profile-details {
+.profile-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--spacing-sm);
+}
+
+.profile-info {
   display: flex;
   flex-direction: column;
   gap: var(--spacing-xs);
+}
+
+.game-name,
+.uid {
+  color: var(--text-secondary);
+  font-size: 14px;
 }
 
 .profile-name {
@@ -74,30 +155,27 @@
   font-weight: 500;
 }
 
-.profile-meta {
-  display: flex;
-  gap: var(--spacing-md);
-  font-size: 14px;
+.game-icon {
   color: var(--text-secondary);
+  font-size: 14px;
 }
 
-.profile-actions {
-  display: flex;
-  gap: var(--spacing-sm);
-}
-
-.action-btn {
-  padding: var(--spacing-xs) var(--spacing-sm);
-  font-size: 12px;
-}
-
-.action-btn.delete {
+/* 删除按钮 */
+.delete-btn {
   background: rgba(248, 113, 113, 0.1);
-  border-color: rgba(248, 113, 113, 0.3);
+  border: 1px solid rgba(248, 113, 113, 0.3);
   color: var(--error);
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-fast);
 }
 
-.action-btn.delete:hover {
+.delete-btn:hover {
   background: rgba(248, 113, 113, 0.2);
 }
 
@@ -112,27 +190,21 @@
   margin: var(--spacing-sm) 0;
 }
 
-/* 响应式设计 */
-@media (max-width: 768px) {
-  .profile-item {
-    flex-direction: column;
-    align-items: stretch;
-    gap: var(--spacing-md);
-  }
-  
-  .profile-actions {
-    justify-content: center;
-  }
-  
-  .profile-meta {
-    flex-direction: column;
-    gap: var(--spacing-xs);
-  }
+/* 配置文件网格布局 */
+.profiles-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: var(--spacing-md);
 }
 
-@media (max-width: 480px) {
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .profiles-grid {
+    grid-template-columns: 1fr;
+  }
+  
   .create-profile-form,
-  .profile-item {
+  .profiles-list {
     padding: var(--spacing-sm);
   }
   
@@ -140,12 +212,10 @@
   .profiles-list h3 {
     font-size: 16px;
   }
-  
-  .profile-actions {
-    flex-direction: column;
-  }
-  
-  .action-btn {
-    width: 100%;
+}
+
+@media (max-width: 480px) {
+  .profile-card {
+    padding: var(--spacing-sm);
   }
 }

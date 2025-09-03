@@ -13,23 +13,6 @@ export default defineConfig({
     vue(),
     // 只在开发环境使用vue-devtools
     process.env.NODE_ENV !== 'production' && vueDevTools(),
-    // 自定义插件：在构建完成后修改HTML文件，移除type="module"属性
-    {
-      name: 'html-post-processing',
-      closeBundle() {
-        const htmlFilePath = './dist/index.html'
-        if (fs.existsSync(htmlFilePath)) {
-          let htmlContent = fs.readFileSync(htmlFilePath, 'utf-8')
-          // 移除script标签中的type="module"和crossorigin属性
-          htmlContent = htmlContent.replace(
-            /<script type="module" crossorigin src="/g,
-            '<script src="'
-          )
-          fs.writeFileSync(htmlFilePath, htmlContent, 'utf-8')
-          console.log('✅ 已成功修改dist/index.html，移除了type="module"和crossorigin属性')
-        }
-      }
-    }
   ],
   resolve: {
     alias: {
