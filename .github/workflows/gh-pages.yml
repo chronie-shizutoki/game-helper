@@ -10,9 +10,6 @@ on:
   workflow_dispatch:
 
 # 授予GITHUB_TOKEN必要的权限
-env:
-  VITE_BASE_PATH: '/${{ github.event.repository.name }}'
-
 permissions:
   contents: read
   pages: write
