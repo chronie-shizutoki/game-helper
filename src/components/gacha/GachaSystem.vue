@@ -92,7 +92,7 @@
 
     <!-- 页脚 -->
     <footer class="footer">
-      <p>© 2025 Helper</p>
+      <p>© 2025 𝕾𝖙𝖊𝖑𝖑𝖆𝖌𝖔𝖌𝖚𝖊. All rights reserved.</p>
     </footer>
   </div>
 </template>

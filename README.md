@@ -1,10 +1,10 @@
-# Chronie Helper
+# 𝕾𝖙𝖊𝖑𝖑𝖆𝖌𝖔𝖌𝖚𝖊
 
 A modern, efficient tool for managing and analyzing gacha game data, built with Vue 3 and Vite.
 
 ## Overview
 
-Chronie Helper is a comprehensive application designed to help players track, analyze, and visualize their gacha pull data from popular games. It provides intuitive interfaces for managing multiple profiles across different games, viewing detailed pull histories, and generating statistical insights.
+𝕾𝖙𝖊𝖑𝖑𝖆𝖌𝖔𝖌𝖚𝖊 is a comprehensive application designed to help players track, analyze, and visualize their gacha pull data from popular games. It provides intuitive interfaces for managing multiple profiles across different games, viewing detailed pull histories, and generating statistical insights.
 
 ## Features
 
@@ -37,7 +37,7 @@ Before you begin, ensure you have met the following requirements:
  git clone <repository-url>
 
 # Navigate to the project directory
- cd chronie-helper
+ cd stellagogue
 ```
 
 2. Install dependencies
@@ -73,7 +73,7 @@ To preview the production build locally:
 ## Project Structure
 
 ```
-chronie-helper/
+stellagogue/
 ├── src/
 │   ├── components/       # Vue components
 │   │   └── gacha/        # Gacha system components
@@ -101,7 +101,7 @@ chronie-helper/
 
 ## Supported Games
 - Genshin Impact
-- Honkai: Star Rail
+<!-- - Honkai: Star Rail -->
 
 ## Contributing
 
@@ -117,4 +117,4 @@ This project is licensed under the AGPL-3.0 License - see the [LICENSE](LICENSE)
 - Vite team for the fast build tool
 - All contributors who have helped with the project
 
-© 2025 Chronie Helper
+© 2025 𝕾𝖙𝖊𝖑𝖑𝖆𝖌𝖔𝖌𝖚𝖊. All rights reserved.

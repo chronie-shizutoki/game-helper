@@ -103,7 +103,6 @@
   "gacha.statistics": "統計分析",
   "gacha.importExport": "導入導出",
   "gacha.profileManagement": "設定檔管理",
-  "gacha.footerText": "© 2025 Helper",
   "gacha.starRarity": "{{ rarity }}星",
   "gacha.spacingRange": "{{ start }}-{{ end }}抽",
   "gacha.fiveStar": "5星",

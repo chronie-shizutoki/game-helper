@@ -3,7 +3,7 @@
 <template>
   <div class="app-container">
     <header class="app-header">
-      <h1>Helper</h1>
+      <h1>𝕾𝖙𝖊𝖑𝖑𝖆𝖌𝖔𝖌𝖚𝖊</h1>
     </header>
     <main class="app-main">
       <GachaSystem />
