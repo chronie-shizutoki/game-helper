@@ -34,10 +34,10 @@ Before you begin, ensure you have met the following requirements:
 1. Clone the repository
 ```bash
 # Using git
- git clone <repository-url>
+ git clone https://github.com/chronie-shizutoki/Stellagogue.git
 
 # Navigate to the project directory
- cd stellagogue
+ cd Stellagogue
 ```
 
 2. Install dependencies
@@ -73,7 +73,7 @@ To preview the production build locally:
 ## Project Structure
 
 ```
-stellagogue/
+Stellagogue/
 ├── src/
 │   ├── components/       # Vue components
 │   │   └── gacha/        # Gacha system components
