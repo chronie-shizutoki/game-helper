@@ -7,6 +7,7 @@
 𝕾𝖙𝖊𝖑𝖑𝖆𝖌𝖔𝖌𝖚𝖊 𝒊𝒔 𝒂 𝒄𝒐𝒎𝒑𝒓𝒆𝒉𝒆𝒏𝒔𝒊𝒗𝒆 𝒂𝒑𝒑𝒍𝒊𝒄𝒂𝒕𝒊𝒐𝒏 𝒅𝒆𝒔𝒊𝒈𝒏𝒆𝒅 𝒕𝒐 𝒉𝒆𝒍𝒑 𝒑𝒍𝒂𝒚𝒆𝒓𝒔 𝒕𝒓𝒂𝒄𝒌, 𝒂𝒏𝒂𝒍𝒚𝒛𝒆, 𝒂𝒏𝒅 𝒗𝒊𝒔𝒖𝒂𝒍𝒊𝒛𝒆 𝒕𝒉𝒆𝒊𝒓 𝒈𝒂𝒄𝒉𝒂 𝒑𝒖𝒍𝒍 𝒅𝒂𝒕𝒂 𝒇𝒓𝒐𝒎 𝒑𝒐𝒑𝒖𝒍𝒂𝒓 𝒈𝒂𝒎𝒆𝒔. 𝑰𝒕 𝒑𝒓𝒐𝒗𝒊𝒅𝒆𝒔 𝒊𝒏𝒕𝒖𝒊𝒕𝒊𝒗𝒆 𝒊𝒏𝒕𝒆𝒓𝒇𝒂𝒄𝒆𝒔 𝒇𝒐𝒓 𝒎𝒂𝒏𝒂𝒈𝒊𝒏𝒈 𝒎𝒖𝒍𝒕𝒊𝒑𝒍𝒆 𝒑𝒓𝒐𝒇𝒊𝒍𝒆𝒔 𝒂𝒄𝒓𝒐𝒔𝒔 𝒅𝒊𝒇𝒇𝒆𝒓𝒆𝒏𝒕 𝒈𝒂𝒎𝒆𝒔, 𝒗𝒊𝒆𝒘𝒊𝒏𝒈 𝒅𝒆𝒕𝒂𝒊𝒍𝒆𝒅 𝒑𝒖𝒍𝒍 𝒉𝒊𝒔𝒕𝒐𝒓𝒊𝒆𝒔, 𝒂𝒏𝒅 𝒈𝒆𝒏𝒆𝒓𝒂𝒕𝒊𝒏𝒈 𝒔𝒕𝒂𝒕𝒊𝒔𝒕𝒊𝒄𝒂𝒍 𝒊𝒏𝒔𝒊𝒈𝒉𝒕𝒔.
 
 <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/db0e4055-1366-4ecc-85da-82ce34e7e56b" />
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/3fc2a0e7-5e86-4e53-bf0c-d6ecf15a6acc" />
 <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/ab8194ff-f7b0-46b4-8306-b3af000b982f" />
 <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/5fccfd6d-4f0d-48f0-bd50-9c519ba3a556" />
 <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/d8e1fff4-41f1-4f19-8b8a-5531f2c3710d" />
