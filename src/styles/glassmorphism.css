@@ -1,15 +1,33 @@
-/* 玻璃拟态风格全局样式 */
+/* 增强版玻璃拟态风格样式 - 流体玻璃效果 (兼容原始类名) */
 :root {
   /* Light mode basic colors */
   --bg-primary: #f8f9fa;
   --bg-secondary: #e9ecef;
   --bg-tertiary: #dee2e6;
   
-  /* 玻璃拟态效果 */
-  --glass-bg: rgba(255, 255, 255, 0.7);
-  --glass-border: rgba(224, 226, 242, 0.3);
-  --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-  --glass-backdrop: blur(12px);
+  /* 流体玻璃拟态效果 */
+  --glass-bg: rgba(255, 255, 255, 0.12);
+  --glass-bg-hover: rgba(255, 255, 255, 0.2);
+  --glass-border: rgba(255, 255, 255, 0.15);
+  --glass-border-hover: rgba(255, 255, 255, 0.3);
+  --glass-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
+  --glass-shadow-hover: 0 15px 45px rgba(31, 38, 135, 0.5);
+  --glass-backdrop: blur(25px) saturate(180%) brightness(1.1);
+  
+  /* 流体效果渐变 */
+  --liquid-gradient: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.1) 0%,
+    rgba(255, 255, 255, 0.05) 25%,
+    rgba(255, 255, 255, 0.02) 50%,
+    rgba(255, 255, 255, 0.05) 75%,
+    rgba(255, 255, 255, 0.1) 100%
+  );
+  
+  /* 液体波纹效果 */
+  --liquid-ripple: radial-gradient(circle at 20% 30%, rgba(0, 204, 255, 0.1) 0%, transparent 50%),
+                   radial-gradient(circle at 80% 70%, rgba(255, 0, 150, 0.1) 0%, transparent 50%),
+                   radial-gradient(circle at 40% 80%, rgba(128, 255, 0, 0.1) 0%, transparent 50%);
   
   /* 文字颜色 */
   --text-primary: #212529;
@@ -49,6 +67,7 @@
   --transition-fast: 0.2s ease;
   --transition-normal: 0.3s ease;
   --transition-slow: 0.5s ease;
+  --liquid-transition: 0.6s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -62,33 +81,114 @@
     --text-secondary: #a0a3bd;
     --text-muted: #6e7191;
 
-      /* 玻璃拟态效果 */
-  --glass-bg: rgba(34, 36, 39, 0.7);
-  --glass-border: rgba(224, 226, 242, 0.09);
-  --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    /* 深色模式流体玻璃效果 */
+    --glass-bg: rgba(34, 36, 39, 0.2);
+    --glass-bg-hover: rgba(34, 36, 39, 0.35);
+    --glass-border: rgba(255, 255, 255, 0.08);
+    --glass-border-hover: rgba(255, 255, 255, 0.15);
+    --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+    --glass-shadow-hover: 0 15px 45px rgba(0, 0, 0, 0.7);
   }
 }
 
-/* 玻璃拟态基础样式 */
+/* 流体玻璃基础样式 */
 .glass-effect {
   background: var(--glass-bg);
+  background-image: var(--liquid-gradient), var(--liquid-ripple);
   border: 1px solid var(--glass-border);
   border-radius: var(--radius-lg);
   box-shadow: var(--glass-shadow);
   backdrop-filter: var(--glass-backdrop);
   -webkit-backdrop-filter: var(--glass-backdrop);
-  transition: all var(--transition-normal);
+  transition: all var(--liquid-transition);
+  position: relative;
+  overflow: hidden;
+}
+
+/* 液体流动效果 */
+.glass-effect::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: 
+    radial-gradient(circle, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+  background-size: 30px 30px;
+  animation: liquid-texture 4s linear infinite;
+  opacity: 0.3;
+}
+
+.glass-effect::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.15) 50%,
+    transparent 100%
+  );
+  animation: liquid-flow 3s ease-in-out infinite;
+  transform: skewX(-20deg);
+}
+
+@keyframes liquid-texture {
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  100% {
+    transform: translate(30px, 30px) rotate(360deg);
+  }
+}
+
+@keyframes liquid-flow {
+  0% {
+    left: -100%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    left: 100%;
+    opacity: 0;
+  }
 }
 
 .glass-effect:hover {
-  background: rgba(42, 44, 49, 0.7);
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
-  transform: translateY(-2px);
+  background: var(--glass-bg-hover);
+  background-image: 
+    var(--liquid-gradient),
+    radial-gradient(circle at 30% 20%, rgba(0, 204, 255, 0.15) 0%, transparent 60%),
+    radial-gradient(circle at 70% 80%, rgba(255, 0, 150, 0.15) 0%, transparent 60%),
+    radial-gradient(circle at 50% 50%, rgba(128, 255, 0, 0.15) 0%, transparent 60%);
+  border-color: var(--glass-border-hover);
+  box-shadow: var(--glass-shadow-hover);
+  border-radius: calc(var(--radius-lg) + 5px);
+  transform: translateY(-3px) scale(1.02);
 }
 
-/* 玻璃卡片容器 */
+.glass-effect:hover::before {
+  animation-duration: 2s;
+  opacity: 0.5;
+}
+
+.glass-effect:hover::after {
+  animation-duration: 1.5s;
+}
+
+/* 流体玻璃卡片容器 */
 .glass-card {
   background: var(--glass-bg);
+  background-image: var(--liquid-gradient), var(--liquid-ripple);
   border: 1px solid var(--glass-border);
   border-radius: var(--radius-lg);
   box-shadow: var(--glass-shadow);
@@ -96,28 +196,98 @@
   -webkit-backdrop-filter: var(--glass-backdrop);
   padding: var(--spacing-md);
   margin-bottom: var(--spacing-md);
+  position: relative;
+  overflow: hidden;
+  transition: all var(--liquid-transition);
 }
 
-/* 玻璃按钮 */
+.glass-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.3) 25%,
+    rgba(255, 255, 255, 0.4) 50%,
+    rgba(255, 255, 255, 0.3) 75%,
+    transparent 100%
+  );
+  animation: liquid-surface 4s ease-in-out infinite;
+}
+
+@keyframes liquid-surface {
+  0%, 100% {
+    transform: translateX(-100%);
+    opacity: 0.3;
+  }
+  50% {
+    transform: translateX(100%);
+    opacity: 0.7;
+  }
+}
+
+.glass-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--glass-shadow-hover);
+  border-radius: calc(var(--radius-lg) + 3px);
+}
+
+/* 流体玻璃按钮 */
 .glass-button {
   background: var(--glass-bg);
+  background-image: var(--liquid-gradient);
   border: 1px solid var(--glass-border);
   border-radius: var(--radius-md);
   color: var(--text-primary);
   padding: var(--spacing-sm) var(--spacing-md);
   cursor: pointer;
-  transition: all var(--transition-fast);
+  transition: all var(--liquid-transition);
   backdrop-filter: var(--glass-backdrop);
   -webkit-backdrop-filter: var(--glass-backdrop);
+  position: relative;
+  overflow: hidden;
+  font-weight: 500;
+}
+
+.glass-button::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.3) 0%, transparent 70%);
+  transition: all 0.6s ease;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
 }
 
 .glass-button:hover {
-  background: rgba(42, 44, 49, 0.8);
-  transform: translateY(-1px);
+  background: var(--glass-bg-hover);
+  background-image: 
+    var(--liquid-gradient),
+    radial-gradient(circle at 25% 25%, rgba(0, 204, 255, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 75% 75%, rgba(255, 0, 150, 0.1) 0%, transparent 50%);
+  border-color: var(--glass-border-hover);
+  border-radius: calc(var(--radius-md) + 5px);
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 
+    var(--glass-shadow-hover),
+    0 0 20px rgba(255, 255, 255, 0.1);
+}
+
+.glass-button:hover::before {
+  width: 200px;
+  height: 200px;
+  opacity: 0.3;
 }
 
 .glass-button:active {
-  transform: translateY(0);
+  transform: translateY(0) scale(0.98);
 }
 
 .glass-button:disabled {
@@ -126,43 +296,59 @@
   transform: none;
 }
 
-/* 玻璃输入框 */
+/* 流体玻璃输入框 */
 .glass-input {
   background: var(--glass-bg);
+  background-image: var(--liquid-gradient);
   border: 1px solid var(--glass-border);
   border-radius: var(--radius-md);
   color: var(--text-primary);
   padding: var(--spacing-sm) var(--spacing-md);
   width: 100%;
-  transition: all var(--transition-fast);
+  transition: all var(--liquid-transition);
+  backdrop-filter: var(--glass-backdrop);
+  -webkit-backdrop-filter: var(--glass-backdrop);
 }
 
 .glass-input:focus {
   outline: none;
   border-color: var(--info);
-  box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.2);
+  background: var(--glass-bg-hover);
+  border-radius: calc(var(--radius-md) + 5px);
+  box-shadow: 
+    0 0 0 3px rgba(96, 165, 250, 0.2),
+    var(--glass-shadow-hover);
+  transform: translateY(-1px);
 }
 
 .glass-input::placeholder {
   color: var(--text-muted);
 }
 
-/* 玻璃选择框 */
+/* 流体玻璃选择框 */
 .glass-select {
-  background: rgba(26, 27, 29, 0.5);
+  background: var(--glass-bg);
+  background-image: var(--liquid-gradient);
   border: 1px solid var(--glass-border);
   border-radius: var(--radius-md);
   color: var(--text-primary);
   padding: var(--spacing-sm) var(--spacing-md);
   width: 100%;
   cursor: pointer;
-  transition: all var(--transition-fast);
+  transition: all var(--liquid-transition);
+  backdrop-filter: var(--glass-backdrop);
+  -webkit-backdrop-filter: var(--glass-backdrop);
 }
 
 .glass-select:focus {
   outline: none;
   border-color: var(--info);
-  box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.2);
+  background: var(--glass-bg-hover);
+  border-radius: calc(var(--radius-md) + 5px);
+  box-shadow: 
+    0 0 0 3px rgba(96, 165, 250, 0.2),
+    var(--glass-shadow-hover);
+  transform: translateY(-1px);
 }
 
 /* 加载状态 */
@@ -178,15 +364,43 @@
 .loading-spinner {
   width: 40px;
   height: 40px;
-  border: 3px solid var(--glass-border);
-  border-top-color: var(--info);
-  border-radius: 50%;
-  animation: spin 1s linear infinite;
+  position: relative;
   margin-bottom: var(--spacing-md);
 }
 
-@keyframes spin {
-  to { transform: rotate(360deg); }
+.loading-spinner::before,
+.loading-spinner::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  animation: liquid-pulse 2s ease-in-out infinite;
+}
+
+.loading-spinner::before {
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, var(--info) 0%, transparent 70%);
+  animation-delay: 0s;
+}
+
+.loading-spinner::after {
+  width: 80%;
+  height: 80%;
+  top: 10%;
+  left: 10%;
+  background: radial-gradient(circle, rgba(0, 204, 255, 0.5) 0%, transparent 70%);
+  animation-delay: 0.5s;
+}
+
+@keyframes liquid-pulse {
+  0%, 100% {
+    transform: scale(0.8);
+    opacity: 0.5;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 0.8;
+  }
 }
 
 /* 状态消息 */
@@ -195,56 +409,120 @@
   border-radius: var(--radius-md);
   margin-bottom: var(--spacing-md);
   text-align: center;
+  backdrop-filter: var(--glass-backdrop);
+  -webkit-backdrop-filter: var(--glass-backdrop);
+  position: relative;
+  overflow: hidden;
+  transition: all var(--liquid-transition);
+}
+
+.status-message::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.1) 50%,
+    transparent 100%
+  );
+  animation: liquid-shimmer 3s ease-in-out infinite;
+}
+
+@keyframes liquid-shimmer {
+  0% { left: -100%; }
+  100% { left: 100%; }
 }
 
 .status-message.info {
-  background: rgba(96, 165, 250, 0.1);
+  background: rgba(96, 165, 250, 0.15);
   border: 1px solid rgba(96, 165, 250, 0.3);
   color: var(--info);
+  box-shadow: 0 8px 25px rgba(96, 165, 250, 0.2);
 }
 
 .status-message.success {
-  background: rgba(74, 222, 128, 0.1);
+  background: rgba(74, 222, 128, 0.15);
   border: 1px solid rgba(74, 222, 128, 0.3);
   color: var(--success);
+  box-shadow: 0 8px 25px rgba(74, 222, 128, 0.2);
 }
 
 .status-message.error {
-  background: rgba(248, 113, 113, 0.1);
+  background: rgba(248, 113, 113, 0.15);
   border: 1px solid rgba(248, 113, 113, 0.3);
   color: var(--error);
+  box-shadow: 0 8px 25px rgba(248, 113, 113, 0.2);
 }
 
 .status-message.warning {
-  background: rgba(250, 204, 21, 0.1);
+  background: rgba(250, 204, 21, 0.15);
   border: 1px solid rgba(250, 204, 21, 0.3);
   color: var(--warning);
+  box-shadow: 0 8px 25px rgba(250, 204, 21, 0.2);
 }
 
 /* 星级徽章 */
 .rarity-badge {
-  padding: 2px 8px;
-  border-radius: 12px;
+  padding: 4px 12px;
+  border-radius: 16px;
   font-size: 12px;
   font-weight: bold;
+  backdrop-filter: var(--glass-backdrop);
+  -webkit-backdrop-filter: var(--glass-backdrop);
+  position: relative;
+  overflow: hidden;
+  transition: all var(--liquid-transition);
+  display: inline-block;
+}
+
+.rarity-badge::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.2) 50%,
+    transparent 100%
+  );
+  transition: left 0.6s ease;
+}
+
+.rarity-badge:hover::before {
+  left: 100%;
+}
+
+.rarity-badge:hover {
+  transform: scale(1.05);
+  border-radius: 20px;
 }
 
 .rarity-5 {
-  background-color: rgba(255, 187, 0, 0.2);
-  border: 1px solid rgba(255, 187, 0, 0.3);
+  background: rgba(255, 187, 0, 0.25);
+  border: 1px solid rgba(255, 187, 0, 0.4);
   color: var(--rarity-5);
+  box-shadow: 0 4px 15px rgba(255, 187, 0, 0.3);
 }
 
 .rarity-4 {
-  background-color: rgba(123, 97, 255, 0.2);
-  border: 1px solid rgba(123, 97, 255, 0.3);
+  background: rgba(123, 97, 255, 0.25);
+  border: 1px solid rgba(123, 97, 255, 0.4);
   color: var(--rarity-4);
+  box-shadow: 0 4px 15px rgba(123, 97, 255, 0.3);
 }
 
 .rarity-3 {
-  background-color: rgba(108, 183, 255, 0.2);
-  border: 1px solid rgba(108, 183, 255, 0.3);
+  background: rgba(108, 183, 255, 0.25);
+  border: 1px solid rgba(108, 183, 255, 0.4);
   color: var(--rarity-3);
+  box-shadow: 0 4px 15px rgba(108, 183, 255, 0.3);
 }
 
 /* 响应式设计 */
@@ -256,10 +534,21 @@
     
     --radius-lg: 10px;
     --radius-xl: 12px;
+    
+    --glass-backdrop: blur(20px) saturate(160%) brightness(1.05);
   }
   
   .glass-card {
     padding: var(--spacing-sm);
+  }
+  
+  .glass-effect:hover,
+  .glass-card:hover {
+    transform: translateY(-2px) scale(1.01);
+  }
+  
+  .glass-button:hover {
+    transform: translateY(-1px) scale(1.03);
   }
 }
 
@@ -272,5 +561,13 @@
     
     --radius-md: 6px;
     --radius-lg: 8px;
+    
+    --glass-backdrop: blur(15px) saturate(140%) brightness(1.02);
+  }
+  
+  .glass-effect:hover,
+  .glass-card:hover,
+  .glass-button:hover {
+    transform: translateY(-1px) scale(1.005);
   }
 }
